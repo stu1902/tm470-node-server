@@ -1,0 +1,12 @@
+{
+  "name": "tm470-node-server",
+  "version": "1.0.0",
+  "description": "server software for TM470 project app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["tm470", "server"],
+  "author": "Stu Thomas Y8531278",
+  "license": "ISC"
+}
