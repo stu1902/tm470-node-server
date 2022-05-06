@@ -2,11 +2,19 @@
   "name": "tm470-node-server",
   "version": "1.0.0",
   "description": "server software for TM470 project app",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["tm470", "server"],
+  "keywords": [
+    "tm470",
+    "server"
+  ],
+  "private": true,
   "author": "Stu Thomas Y8531278",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
+  }
 }
