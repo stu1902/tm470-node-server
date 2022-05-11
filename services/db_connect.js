@@ -7,6 +7,13 @@ const connection = mysql.createConnection({
 });
 
 connection.connect();
+
+connection.query('SELECT * FROM TM470_schema.user', (err, rows) => {
+    if (err) throw err
+
+    console.log('The solution is: ', rows)
+})
+
 console.log ('connected!');
 
 module.exports = connection;
