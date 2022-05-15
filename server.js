@@ -1,9 +1,18 @@
 require('dotenv').config()
 
 const express = require('express')
-const app = express()
+const cors = require('cors');
+const app = express();
+//const router = require('./routes');
 const hostname = '127.0.0.1';
-const port = 3000
+const port = 3000;
+var corsOrigin = {
+  origin: 'http://localhost:3001'
+};
+
+app.use(cors(corsOrigin));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

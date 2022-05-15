@@ -1,19 +1,15 @@
 const mysql = require('mysql');
+const dbConf = require ('./db_config.js');
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Daisy2009!',
-    database: 'tm470_schema'
+    host: dbConf.HOST,
+    user: dbConf.USER,
+    password: dbConf.PASSWORD,
+    database: dbConf.DB
 });
 
-connection.connect();
-
-connection.query('SELECT * FROM TM470_schema.user', (err, rows) => {
-    if (err) throw err
-
-    console.log('The solution is: ', rows)
-})
-
-console.log ('connected!');
+connection.connect(error => {
+    if (error) throw error;
+    console.log ("Connected to database ");
+});
 
 module.exports = connection;
