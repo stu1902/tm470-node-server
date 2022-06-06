@@ -1,18 +1,12 @@
-const express = require('express');
-const user = require("../services/user");
+const express = require("express");
+const controllers = require("../controllers");
 const router = express.Router();
 
-/*router.get('/', function (req, res) {
-    res.json({message: 'ok'});
-});*/
-
-router.get('/', async function(req, res, next) {
-    try {
-        res.json(user.getMultiple());
-    } catch (err) {
-        console.error(`Error while getting quotes `, err.message);
-        next(err);
-    }
-});
+router.route("/").get(controllers.getAllUsers).post(controllers.createUser);
+router
+    .route("/:id")
+    .get(controllers.getUser)
+    .put(controllers.updateUser)
+    .delete(controllers.deleteUser);
 
 module.exports = router;

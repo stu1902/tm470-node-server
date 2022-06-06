@@ -1,45 +1,20 @@
-require('dotenv').config()
-
-const express = require('express')
-const cors = require('cors');
+const express = require("express");
 const app = express();
-const indexRouter = require('./routes/index');
-const userRouter = require('./routes/user');
-const hostname = '127.0.0.1';
-const port = 3000;
-const index = require('./routes/index')
-var corsOrigin = {
-  origin: 'http://localhost:3001'
-};
+const cors = require("cors");
+const router = require("./routes");
+const AppError = require("./utils/appError");
+const errorHandler = require("./utils/errorHandler");
 
+app.use('/', router);
 
-app.use(cors(corsOrigin));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use('/', indexRouter);
-app.use('/user', userRouter);
+app.all("*", (req, res, next) => {
+  next(new AppError(`The URL ${req.originalUrl} does not exists`, 404));
+});
+app.use(errorHandler);
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`);
+});
 
 module.exports = app;
-
-/*
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.get('/user', (req, res) =>{
-  res.send('This is the user page!')
-})
-
-app.get('/location', (req, res) =>{
-  res.send('This is the location page!')
-})
-
-app.get('/route', (req, res) =>{
-  res.send('This is the route page!')
-})
-*/
-
-app.listen(port, () => {
-  console.log(`Server running at http://${hostname}:${port}`)
-})
-

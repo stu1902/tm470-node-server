@@ -3,7 +3,7 @@ const config = {
         host: 'localhost',
         user: 'root',
         password: 'Daisy2009!',
-        database: 'tm470_schema'
+        database: 'TM470_schema'
     }
 };
 
