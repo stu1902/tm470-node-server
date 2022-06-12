@@ -6,13 +6,22 @@ const connection = mysql.createConnection({
     password: dbConf.db.password,
     database: dbConf.db.database,
     waitForConnections: true,
-    connectionLimit: 10
 });
 
 connection.connect(error => {
     if (error) throw error;
     console.log ("Connected to database ");
 });
+
+
+let sql = 'SELECT * FROM routes';
+connection.query(sql, (error, results, fields) => {
+    if (error) {
+        return console.error(error.message);
+    }
+    console.log(results);
+});
+
 
 
 module.exports = connection;
